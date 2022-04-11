@@ -1,0 +1,18 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Carry Animals - Resources!",
+		"description": "Carry Animals!",
+		"uuid": "1e076768-97d2-442f-9c11-6401410df4fb",
+		"version": [1,0,0],
+		"min_engine_version": [1,16,0]
+	},
+	"modules": [
+		{
+			"description": "Resources",
+			"uuid": "2c363f40-1fed-4c6c-9f80-dd1acd7474ef",
+			"type": "resources",
+			"version": [1,0,0]
+		}
+	]
+}
