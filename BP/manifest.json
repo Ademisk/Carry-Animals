@@ -1,0 +1,24 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Carry Animals - Behavior!",
+		"description": "Carry Animals!",
+		"uuid": "7738206e-5778-4d9c-885b-650353320eb1",
+		"version": [1,0,0],
+		"min_engine_version": [1,16,0]
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"uuid": "aa333bc2-8b65-4909-9341-eea92bda5c1c",
+			"type": "data",
+			"version": [1,0,0]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "1e076768-97d2-442f-9c11-6401410df4fb",
+			"version": [1,0,0]
+		}
+	]
+}

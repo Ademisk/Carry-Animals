@@ -1,0 +1,73 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.chicken.load": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"on_entry": [
+						"@s max:eCannotRidePlayer",
+						"/say Chicken cannot be carried!"
+					],
+					"transitions": [
+						{
+							"can_get_picked_up": "query.is_in_love"
+						}
+					]
+				},
+
+				"can_get_picked_up": {
+					"on_entry": [
+						"@s max:eCanRidePlayer",
+						"/say Chicken can be carried!"
+					],
+					"transitions": [
+						{
+							"attempt_to_get_picked_up": "query.has_any_family('carried_chicken')"
+						},
+						{
+							"default": "!query.is_in_love"
+						}
+					]
+				},
+
+				"attempt_to_get_picked_up": {
+					"on_entry": [
+						"/ride @s start_riding @p[family=carrying_chicken]",
+						"/say pick up"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_in_love"
+						},
+						{
+							"fillerState": "!query.is_riding"
+						},
+						{
+							"is_carried_by_player": "query.is_riding"
+						}
+					]
+				},
+
+				"fillerState": {
+					"transitions": [
+						{
+							"attempt_to_get_picked_up": "1"
+						}
+					]
+				},
+
+				"is_carried_by_player": {
+					"on_entry": [
+						"/say Being carried!"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_riding"
+						}
+					]
+				}
+			}
+		}
+	}
+}

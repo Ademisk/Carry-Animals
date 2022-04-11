@@ -5,7 +5,15 @@
       "identifier": "minecraft:player",
       "is_spawnable": false,
       "is_summonable": false,
-      "is_experimental": false
+      "is_experimental": false,
+      "animations": {
+        "on_load": "controller.animation.player.load"
+      },
+      "scripts": {
+        "animate": [
+          "on_load"
+        ]
+      }
     },
 
     "component_groups": {
@@ -43,15 +51,67 @@
         "minecraft:spell_effects": {
           "remove_effects": "bad_omen"
         }
+      },
+
+      //Addon
+      //=========================
+      "max:cgCarryNothing": {
+        "minecraft:type_family": {
+          "family": [ "player" ]
+        },
+        "minecraft:rideable": {
+          "seat_count": 2,
+          "family_types": [
+            "parrot_tame"
+          ],
+          "pull_in_entities": false,
+          "seats": [
+            {
+              "position": [0.4, -0.15, 0.04],
+              "min_rider_count": 0,
+              "max_rider_count": 0,
+              "lock_rider_rotation": 0
+            },
+            {
+              "position": [-0.4, -0.15, 0.04],
+              "min_rider_count": 1,
+              "max_rider_count": 2,
+              "lock_rider_rotation": 0
+            }
+          ]
+        }
+      },
+      "max:cgCarryChicken": {
+        "minecraft:type_family": {
+          "family": [ "player", "carrying_chicken" ]
+        },
+        "minecraft:rideable": {
+          "seat_count": 1,
+          "family_types": [
+            "carried_chicken"
+          ],
+          "pull_in_entities": true,
+          "seats": [
+            {
+              "position": [0.4, -0.15, 0.04],
+              "min_rider_count": 0,
+              "max_rider_count": 0,
+              "lock_rider_rotation": 0
+            }
+          ]
+        }
+      },
+      "max:cgMainHandEmpty": {
       }
+      //=========================
     },
 
     "components": {
+      "minecraft:type_family": {
+          "family": [ "player" ]
+        },
       "minecraft:experience_reward": {
         "on_death": "Math.Min(query.player_level * 7, 100)"
-      },
-      "minecraft:type_family": {
-        "family": [ "player" ]
       },
       "minecraft:is_hidden_when_invisible": {
       },
@@ -113,27 +173,6 @@
       "minecraft:insomnia": {
         "days_until_insomnia": 3
       },
-      "minecraft:rideable": {
-        "seat_count": 2,
-        "family_types": [
-          "parrot_tame"
-        ],
-        "pull_in_entities": true,
-        "seats": [
-          {
-            "position": [0.4, -0.15, 0.04],
-            "min_rider_count": 0,
-            "max_rider_count": 0,
-            "lock_rider_rotation": 0
-          },
-          {
-            "position": [-0.4, -0.15, 0.04],
-            "min_rider_count": 1,
-            "max_rider_count": 2,
-            "lock_rider_rotation": 0
-          }
-        ]
-      },
       "minecraft:conditional_bandwidth_optimization": {
       },
       "minecraft:block_climber": {},
@@ -187,7 +226,49 @@
         "remove": {
           "component_groups": [ "minecraft:raid_trigger" ]
         }
+      },
+      //=========================
+      //Addon
+      //=========================
+      "max:eDefaultNoCarry": {
+        "add": {
+          "component_groups": [
+            "max:cgCarryNothing"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgCarryChicken"
+          ]
+        }
+      },
+      "max:eCarryChicken": {
+        "add": {
+          "component_groups": [
+            "max:cgCarryChicken"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgCarryNothing"
+          ]
+        }
+      },
+      "max:eMainHandEmpty": {
+        "add": {
+          "component_groups": [
+            "max:cgMainHandEmpty"
+          ]
+        }
+      },
+      "max:eMainHandNotEmpty": {
+        "remove": {
+          "component_groups": [
+            "max:cgMainHandEmpty"
+          ]
+        }
       }
+      //=========================
     }
   }
 }

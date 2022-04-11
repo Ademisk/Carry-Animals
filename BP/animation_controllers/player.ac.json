@@ -1,0 +1,38 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player.load": {
+			"initial_state": "loaded",
+			"states": {
+				"loaded": {
+					"transitions": [
+						{
+							"default": "1"
+						}
+					]
+				},
+				"default": {
+					"on_entry": [
+						"@s max:eDefaultNoCarry"
+					],
+					"transitions": [
+						{
+							"kick_riders": "query.has_rider && variable.attack_time > 0.0 || query.is_swimming || query.is_gliding"
+						}
+					]
+				},
+				"kick_riders": {
+					"on_entry": [
+						"/say Riders kicked!",
+						"/ride @s evict_riders"
+					],
+					"transitions": [
+						{
+							"default": "!query.has_rider"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,11 +1,19 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.18.10",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:chicken",
       "is_spawnable": true,
       "is_summonable": true,
-      "is_experimental": false
+      "is_experimental": false,
+      "animations": {
+        "on_load": "controller.animation.chicken.load"
+      },
+      "scripts": {
+        "animate": [
+          "on_load"
+        ]
+      }
     },
     "component_groups": {
       "minecraft:chicken_baby": {
@@ -82,14 +90,46 @@
             }
           }
         }
+      },
+
+      //=====================
+      //Addon
+      //=====================
+      "max:cgDefaultChicken": {
+        "minecraft:type_family": {
+          "family": [ "chicken", "mob"]
+        }
+      },
+      "max:cgRidingChicken": {
+        "minecraft:type_family": {
+          "family": [ "chicken", "mob", "carried_chicken" ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    //{ "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": ""},  //doesn't work for some reason
+                    //{ "test": "has_component", "subject" : "other", "operator": "equals", "value": "max:cgMainHandEmpty"},
+                    { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "wheat_seeds"},
+                    { "test": "is_family", "subject" : "other", "value" :  "player"}
+                  ]
+                },
+                "event": "max:eCarryChicken",
+                "target": "other"
+              },
+              //"swing": true,
+              "interact_text": "Pick up Chicken"
+            }
+          ]
+        }
       }
+      //=====================
     },
 
     "components": {
       "minecraft:is_hidden_when_invisible": {
-      },
-      "minecraft:type_family": {
-        "family": [ "chicken", "mob" ]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -189,11 +229,11 @@
       }
     },
 
+
     "events": {
       "from_egg": {
         "add": { "component_groups": [ "minecraft:chicken_baby" ] }
       },
-
       "minecraft:entity_spawned": {
         "randomize": [
           {
@@ -210,7 +250,6 @@
           }
         ]
       },
-
       "minecraft:entity_born": {
         "remove": {
         },
@@ -220,7 +259,6 @@
           ]
         }
       },
-
       "minecraft:ageable_grow_up": {
         "remove": {
           "component_groups": [
@@ -233,14 +271,42 @@
           ]
         }
       },
-
       "minecraft:spawn_adult": {
         "add": {
           "component_groups": [
             "minecraft:chicken_adult"
           ]
         }
+      },
+
+      //=========================
+      //Addon
+      //=========================
+      "max:eCannotRidePlayer": {
+        "add": {
+          "component_groups": [
+            "max:cgDefaultChicken"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgRidingChicken"
+          ]
+        }
+      },
+      "max:eCanRidePlayer": {
+        "add": {
+          "component_groups": [
+            "max:cgRidingChicken"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgDefaultChicken"
+          ]
+        }
       }
+      //=========================
     }
   }
 }
