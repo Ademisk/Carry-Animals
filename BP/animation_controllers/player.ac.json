@@ -14,7 +14,7 @@
 
 				"default": {
 					"on_entry": [
-						"@s max:eDefaultNoCarry"
+						"@s carryChicken:eCarryDefault"
 					],
 					"transitions": [
 						{
@@ -25,23 +25,23 @@
 				},
 
 				"has_chicken_rider": {
-					"on_entry": [
+					/*"on_entry": [
 						"/say has riders!"
-					],
+					],*/
 					"transitions": [
-						{
+						/*{
 							"toss_chicken": "variable.attack_time > 0.0 && variable.attack_time <= 0.2"
-						},
+						},*/
 						{
-							"drop_chicken": "query.is_swimming || query.is_gliding"
+							"drop_chicken": "(variable.attack_time > 0.0 && variable.attack_time <= 0.2) || query.is_swimming || query.is_gliding"
 						}
 					]
 				},
 
-				"toss_chicken": {
+				/*"toss_chicken": {
 					"on_entry": [
 						"/say toss chicken!",
-						"@s max:eTossChicken",
+						"@s carryChicken:eTossChicken",
 						"/ride @s evict_riders"
 					],
 					"transitions": [
@@ -49,11 +49,11 @@
 							"default": "!query.has_rider"
 						}
 					]
-				},
+				},*/
 
 				"drop_chicken": {
 					"on_entry": [
-						"/say Riders kicked!",
+						//"/say Riders kicked!",
 						"/ride @s evict_riders"
 					],
 					"transitions": [

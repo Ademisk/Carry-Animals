@@ -1,5 +1,5 @@
 {
-  "format_version": "1.18.10",
+  "format_version": "1.18.30",
   "minecraft:entity": {
     "description": {
       "identifier": "minecraft:chicken",
@@ -95,12 +95,12 @@
       //=====================
       //Addon
       //=====================
-      "max:cgDefaultChicken": {
+      "carryChicken:cgDefaultChicken": {
         "minecraft:type_family": {
           "family": [ "chicken", "mob"]
         }
       },
-      "max:cgRidingChicken": {
+      "carryChicken:cgRidingChicken": {
         "minecraft:type_family": {
           "family": [ "chicken", "mob", "carried_chicken" ]
         },
@@ -120,7 +120,7 @@
                     { "test": "is_family", "subject" : "other", "value" :  "player"}
                   ]
                 },
-                "event": "max:eCarryChicken",
+                "event": "carryChicken:eCarryChicken",
                 "target": "other"
               },
               "swing": true,
@@ -132,31 +132,31 @@
           "triggers": [
             {
               "filters": { "test": "is_sneaking", "subject": "other", "operator": "equals", "value": true },
-              "event": "max:eCrouchedRidingPosition"
+              "event": "carryChicken:eCrouchedRidingPosition"
             },
             {
               "filters": { "test": "is_sneaking", "subject": "other", "operator": "equals", "value": false },
-              "event": "max:eCanRidePlayer"
+              "event": "carryChicken:eCanRidePlayer"
             }
           ]
-        },
-        "minecraft:projectile": {
+        }
+        /*"minecraft:projectile": {
           "power": 3.5,
           "gravity": 0.03,
           "angle_offset": 40.0
-        }
+        }*/
       },
-      "max:cgBaseVariant": {
+      "carryChicken:cgDefaultVariant": {
         "minecraft:variant": {
           "value": 0
         }
       },
-      "max:cgRidingVariant": {
+      "carryChicken:cgRidingVariant": {
         "minecraft:variant": {
           "value": 1
         }
       },
-      "max:cgCrouchRidingVariant": {
+      "carryChicken:cgCrouchRidingVariant": {
         "minecraft:variant": {
           "value": 2
         }
@@ -318,46 +318,46 @@
       //=========================
       //Addon
       //=========================
-      "max:eCannotRidePlayer": {
+      "carryChicken:eCannotRidePlayer": {
         "add": {
           "component_groups": [
-            "max:cgDefaultChicken",
-            "max:cgBaseVariant"         //var 0
+            "carryChicken:cgDefaultChicken",
+            "carryChicken:cgDefaultVariant"        //var 0
           ]
         },
         "remove": {
           "component_groups": [
-            "max:cgRidingChicken",
-            "max:cgRidingVariant",      //var 1
-            "max:cgCrouchRidingVariant" //var 2
+            "carryChicken:cgRidingChicken",
+            "carryChicken:cgRidingVariant",        //var 1
+            "carryChicken:cgCrouchRidingVariant"   //var 2
           ]
         }
       },
-      "max:eCanRidePlayer": {
+      "carryChicken:eCanRidePlayer": {
         "add": {
           "component_groups": [
-            "max:cgRidingChicken",
-            "max:cgRidingVariant"       //var 1
+            "carryChicken:cgRidingChicken",
+            "carryChicken:cgRidingVariant"         //var 1
           ]
         },
         "remove": {
           "component_groups": [
-            "max:cgDefaultChicken",
-            "max:cgBaseVariant",        //var 0
-            "max:cgCrouchRidingVariant" //var 2
+            "carryChicken:cgDefaultChicken",
+            "carryChicken:cgDefaultVariant",       //var 0
+            "carryChicken:cgCrouchRidingVariant"   //var 2
           ]
         }
       },
-      "max:eCrouchedRidingPosition": {
+      "carryChicken:eCrouchedRidingPosition": {
         "add": {
           "component_groups": [
-            "max:cgCrouchRidingVariant" //var 2
+            "carryChicken:cgCrouchRidingVariant"   //var 2
           ]
         },
         "remove": {
           "component_groups": [
-            "max:cgBaseVariant",        //var 0
-            "max:cgRidingVariant"       //var 1
+            "carryChicken:cgDefaultVariant",       //var 0
+            "carryChicken:cgRidingVariant"         //var 1
           ]
         }
       }

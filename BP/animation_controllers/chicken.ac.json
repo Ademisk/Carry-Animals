@@ -6,8 +6,8 @@
 			"states": {
 				"default": {
 					"on_entry": [
-						"@s max:eCannotRidePlayer",
-						"/say Chicken cannot be carried!"
+						//"/say Chicken cannot be carried!",
+						"@s carryChicken:eCannotRidePlayer"
 					],
 					"transitions": [
 						{
@@ -18,8 +18,8 @@
 
 				"can_get_picked_up": {
 					"on_entry": [
-						"@s max:eCanRidePlayer",
-						"/say Chicken can be carried!"
+						//"/say Chicken can be carried!",
+						"@s carryChicken:eCanRidePlayer"
 					],
 					"transitions": [
 						{
@@ -41,7 +41,7 @@
 							"default": "!query.is_in_love"
 						},
 						{
-							"fillerState": "!query.is_riding"
+							"fillerPickUpState": "!query.is_riding"
 						},
 						{
 							"is_carried_by_player": "query.is_riding"
@@ -49,7 +49,7 @@
 					]
 				},
 
-				"fillerState": {
+				"fillerPickUpState": {
 					"transitions": [
 						{
 							"attempt_to_get_picked_up": "1"
@@ -63,9 +63,12 @@
 					],*/
 					"transitions": [
 						{
-							"default": "!query.is_riding"
+							"default": "!query.is_riding && !query.is_in_love"
 						},
 						{
+							"fillerPickUpState": "!query.is_riding"
+						}
+						/*{
 							"is_var_0": "query.variant == 0"
 						},
 						{
@@ -73,11 +76,11 @@
 						},
 						{
 							"is_var_2": "query.variant == 2"
-						}
+						}*/
 					]
-				},
+				}
 
-				"is_var_0": {
+				/*"is_var_0": {
 					"on_entry": [
 						"/say var 0!"
 					],
@@ -108,7 +111,7 @@
 							"is_carried_by_player": "1"
 						}
 					]
-				}
+				}*/
 			}
 		}
 	}

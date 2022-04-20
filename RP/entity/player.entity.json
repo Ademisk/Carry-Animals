@@ -24,9 +24,6 @@
           "variable.last_blink_time = 0.0;",
           "variable.hand_bob = 0.0;",
 
-          //"variable.parrot_can_ride=true;",
-          //"variable.chicken_can_ride=false;",
-          //"variable.has_parrot_rider=false;",
           "variable.is_carrying_chicken=false;"
         ],
         "pre_animation": [

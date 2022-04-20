@@ -16,7 +16,7 @@
       },
       "animations": {
         "general": "animation.chicken.general",
-        "riding_player_crouch": "animation.chicken.crouch_shift"
+        "riding_crouched_player": "animation.chicken.crouch_shift"
       },
       "scripts": {
         "animate": [
@@ -24,7 +24,7 @@
           { "move": "query.modified_move_speed" },
           "look_at_target",
           { "baby_transform": "query.is_baby" },
-          { "riding_player_crouch": "query.variant == 2" }
+          { "riding_crouched_player": "query.variant == 2" }
         ]
       },
       "render_controllers": [ "controller.render.chicken" ],
