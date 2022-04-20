@@ -3,22 +3,22 @@
 	"header": {
 		"name": "Carry Animals - Behavior!",
 		"description": "Carry Animals!",
-		"uuid": "7738206e-5778-4d9c-885b-650353320eb1",
-		"version": [1,0,0],
+		"uuid": "d506d84e-b857-4656-91d8-8eca51b37b4a",
+		"version": [1,0,1],
 		"min_engine_version": [1,16,0]
 	},
 	"modules": [
 		{
 			"description": "Behavior",
-			"uuid": "aa333bc2-8b65-4909-9341-eea92bda5c1c",
+			"uuid": "1abca892-7930-4774-987d-1ce8e5a7e600",
 			"type": "data",
-			"version": [1,0,0]
+			"version": [1,0,1]
 		}
 	],
 	"dependencies": [
 		{
-			"uuid": "1e076768-97d2-442f-9c11-6401410df4fb",
-			"version": [1,0,0]
+			"uuid": "ba975189-a8c0-4e51-a639-08ab65806cc7",
+			"version": [1,0,1]
 		}
 	]
 }

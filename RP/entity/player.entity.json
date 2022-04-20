@@ -22,9 +22,17 @@
           "variable.is_holding_right = 0.0;",
           "variable.is_blinking = 0.0;",
           "variable.last_blink_time = 0.0;",
-          "variable.hand_bob = 0.0;"
+          "variable.hand_bob = 0.0;",
+
+          //"variable.parrot_can_ride=true;",
+          //"variable.chicken_can_ride=false;",
+          //"variable.has_parrot_rider=false;",
+          "variable.is_carrying_chicken=false;"
         ],
         "pre_animation": [
+          //"variable.is_carrying_chicken = query.has_any_family('carrying_chicken');",   //uncomment once MCPE-153908 is fixed
+          "variable.is_carrying_chicken = query.is_saddled;",
+
           "variable.helmet_layer_visible = 1.0;",
           "variable.leg_layer_visible = 1.0;",
           "variable.boot_layer_visible = 1.0;",
@@ -53,12 +61,14 @@
         "look_at_target_swimming": "animation.humanoid.look_at_target.swimming",
         "look_at_target_inverted": "animation.player.look_at_target.inverted",
         "cape": "animation.player.cape",
-        "move.arms": "animation.player.move.arms",
+        "move.arms.right": "animation.player.move.arms.right",
+        "move.arms.left": "animation.player.move.arms.left",
         "move.legs": "animation.player.move.legs",
         "swimming": "animation.player.swim",
         "swimming.legs": "animation.player.swim.legs",
         "riding.arms": "animation.player.riding.arms",
         "riding.legs": "animation.player.riding.legs",
+        "chicken_carrying.arms": "animation.player.chicken_carrying.arms",
         "holding": "animation.player.holding",
         "brandish_spear": "animation.humanoid.brandish_spear",
         "holding_spyglass": "animation.humanoid.holding_spyglass",
@@ -66,7 +76,8 @@
         "attack.positions": "animation.player.attack.positions",
         "attack.rotations": "animation.player.attack.rotations",
         "sneaking": "animation.player.sneaking",
-        "bob": "animation.player.bob",
+        "bob.right_arm": "animation.player.bob.right_arm",
+        "bob.left_arm": "animation.player.bob.left_arm",
         "damage_nearby_mobs": "animation.humanoid.damage_nearby_mobs",
         "bow_and_arrow": "animation.humanoid.bow_and_arrow",
         "use_item_progress": "animation.humanoid.use_item_progress",

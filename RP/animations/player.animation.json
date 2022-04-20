@@ -32,14 +32,19 @@
 				}
 			}
 		},
-		"animation.player.bob" : {
+		"animation.player.bob.right_arm" : {
+			"loop" : true,
+			"bones" : {
+				"rightarm" : {
+					"rotation" : [ 0.0, 0.0, "(math.cos(query.life_time * 103.2) * 2.865) + 2.865" ]
+				}
+			}
+		},
+		"animation.player.bob.left_arm" : {
 			"loop" : true,
 			"bones" : {
 				"leftarm" : {
 					"rotation" : [ 0.0, 0.0, "-((math.cos(query.life_time * 103.2) * 2.865) + 2.865)" ]
-				},
-				"rightarm" : {
-					"rotation" : [ 0.0, 0.0, "(math.cos(query.life_time * 103.2) * 2.865) + 2.865" ]
 				}
 			}
 		},
@@ -155,14 +160,19 @@
 				}
 			}
 		},
-		"animation.player.move.arms" : {
+		"animation.player.move.arms.right" : {
+			"loop" : true,
+			"bones" : {
+				"rightarm" : {
+					"rotation" : [ "-variable.tcos0", 0.0, 0.0 ]
+				}
+			}
+		},
+		"animation.player.move.arms.left" : {
 			"loop" : true,
 			"bones" : {
 				"leftarm" : {
 					"rotation" : [ "variable.tcos0", 0.0, 0.0 ]
-				},
-				"rightarm" : {
-					"rotation" : [ "-variable.tcos0", 0.0, 0.0 ]
 				}
 			}
 		},
@@ -264,6 +274,17 @@
 				},
 				"rightarm" : {
 					"rotation" : [ -36.0, 0.0, 0.0 ]
+				}
+			}
+		},
+		"animation.player.chicken_carrying.arms" : {
+			"loop" : true,
+			"bones" : {
+				"rightarm" : {
+					"rotation" : [ 0.0, 0.0, 36.0 ]
+				},
+				"rightitem": {
+					"scale": [ 0, 0, 0 ]
 				}
 			}
 		},

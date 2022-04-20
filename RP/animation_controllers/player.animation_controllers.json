@@ -179,11 +179,17 @@
 						{
 							"look_at_target" : "!query.is_sleeping && !query.is_emoting"
 						},
-						"move.arms",
+						{
+							"move.arms.right" : "!variable.is_carrying_chicken"
+						},
+						"move.arms.left",
 						"move.legs",
 						"cape",
 						{
 							"riding.arms" : "query.is_riding"
+						},
+						{
+							"chicken_carrying.arms" : "variable.is_carrying_chicken"
 						},
 						{
 							"riding.legs" : "query.is_riding"
@@ -202,7 +208,10 @@
 							"sneaking" : "query.is_sneaking && !query.is_sleeping"
 						},
 						{
-							"bob": "!variable.is_holding_spyglass"
+							"bob.right_arm": "!variable.is_holding_spyglass && !variable.is_carrying_chicken"
+						},
+						{
+							"bob.left_arm": "!variable.is_holding_spyglass"
 						},
 						{
 							"damage_nearby_mobs" : "variable.damage_nearby_mobs"

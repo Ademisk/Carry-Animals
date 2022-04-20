@@ -111,18 +111,54 @@
                 "filters": {
                   "all_of": [
                     //{ "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": ""},  //doesn't work for some reason
-                    //{ "test": "has_component", "subject" : "other", "operator": "equals", "value": "max:cgMainHandEmpty"},
-                    { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "wheat_seeds"},
+                    {"any_of": [
+                      { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "wheat_seeds"},
+                      { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "beetroot_seeds"},
+                      { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "melon_seeds"},
+                      { "test": "has_equipment", "subject" : "other", "domain": "hand", "operator": "equals", "value": "pumpkin_seeds"}
+                    ]},
                     { "test": "is_family", "subject" : "other", "value" :  "player"}
                   ]
                 },
                 "event": "max:eCarryChicken",
                 "target": "other"
               },
-              //"swing": true,
+              "swing": true,
               "interact_text": "Pick up Chicken"
             }
           ]
+        },
+        "minecraft:environment_sensor": {
+          "triggers": [
+            {
+              "filters": { "test": "is_sneaking", "subject": "other", "operator": "equals", "value": true },
+              "event": "max:eCrouchedRidingPosition"
+            },
+            {
+              "filters": { "test": "is_sneaking", "subject": "other", "operator": "equals", "value": false },
+              "event": "max:eCanRidePlayer"
+            }
+          ]
+        },
+        "minecraft:projectile": {
+          "power": 3.5,
+          "gravity": 0.03,
+          "angle_offset": 40.0
+        }
+      },
+      "max:cgBaseVariant": {
+        "minecraft:variant": {
+          "value": 0
+        }
+      },
+      "max:cgRidingVariant": {
+        "minecraft:variant": {
+          "value": 1
+        }
+      },
+      "max:cgCrouchRidingVariant": {
+        "minecraft:variant": {
+          "value": 2
         }
       }
       //=====================
@@ -285,24 +321,43 @@
       "max:eCannotRidePlayer": {
         "add": {
           "component_groups": [
-            "max:cgDefaultChicken"
+            "max:cgDefaultChicken",
+            "max:cgBaseVariant"         //var 0
           ]
         },
         "remove": {
           "component_groups": [
-            "max:cgRidingChicken"
+            "max:cgRidingChicken",
+            "max:cgRidingVariant",      //var 1
+            "max:cgCrouchRidingVariant" //var 2
           ]
         }
       },
       "max:eCanRidePlayer": {
         "add": {
           "component_groups": [
-            "max:cgRidingChicken"
+            "max:cgRidingChicken",
+            "max:cgRidingVariant"       //var 1
           ]
         },
         "remove": {
           "component_groups": [
-            "max:cgDefaultChicken"
+            "max:cgDefaultChicken",
+            "max:cgBaseVariant",        //var 0
+            "max:cgCrouchRidingVariant" //var 2
+          ]
+        }
+      },
+      "max:eCrouchedRidingPosition": {
+        "add": {
+          "component_groups": [
+            "max:cgCrouchRidingVariant" //var 2
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "max:cgBaseVariant",        //var 0
+            "max:cgRidingVariant"       //var 1
           ]
         }
       }

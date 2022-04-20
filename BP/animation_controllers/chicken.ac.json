@@ -33,8 +33,8 @@
 
 				"attempt_to_get_picked_up": {
 					"on_entry": [
-						"/ride @s start_riding @p[family=carrying_chicken]",
-						"/say pick up"
+						//"/say pick up",
+						"/ride @s start_riding @p[family=carrying_chicken]"
 					],
 					"transitions": [
 						{
@@ -58,12 +58,54 @@
 				},
 
 				"is_carried_by_player": {
-					"on_entry": [
+					/*"on_entry": [
 						"/say Being carried!"
-					],
+					],*/
 					"transitions": [
 						{
 							"default": "!query.is_riding"
+						},
+						{
+							"is_var_0": "query.variant == 0"
+						},
+						{
+							"is_var_1": "query.variant == 1"
+						},
+						{
+							"is_var_2": "query.variant == 2"
+						}
+					]
+				},
+
+				"is_var_0": {
+					"on_entry": [
+						"/say var 0!"
+					],
+					"transitions": [
+						{
+							"is_carried_by_player": "1"
+						}
+					]
+				},
+
+				"is_var_1": {
+					"on_entry": [
+						"/say var 1!"
+					],
+					"transitions": [
+						{
+							"is_carried_by_player": "1"
+						}
+					]
+				},
+
+				"is_var_2": {
+					"on_entry": [
+						"/say var 2!"
+					],
+					"transitions": [
+						{
+							"is_carried_by_player": "1"
 						}
 					]
 				}
